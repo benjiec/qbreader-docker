@@ -1,0 +1,16 @@
+FROM node:20
+
+WORKDIR /qbreader/website
+
+# Install only dependencies first for better layer caching
+COPY website/package*.json ./
+RUN npm ci
+
+# Copy source and build
+COPY website /qbreader/website
+RUN npm run build
+
+EXPOSE 3000
+CMD ["npm", "start"]
+
+

@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  mongo:
+    image: mongo:6.0
+    container_name: qbreader-mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=example
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./db:/data/db
+
+  website:
+    build:
+      context: .
+      dockerfile: Dockerfile.website
+    container_name: qbreader-website
+    depends_on:
+      - mongo
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - SECRET_KEY_1=devSecret1
+      - SECRET_KEY_2=devSecret2
+      # Primary connection string for the app inside Docker
+      - MONGODB_URI=mongodb://qbreader:qbreader@mongo:27017/?authSource=admin
+      # Fallbacks (kept for compatibility with existing code)
+      - MONGODB_USERNAME=qbreader
+      - MONGODB_PASSWORD=qbreader
+    ports:
+      - "3000:3000"
+
+
