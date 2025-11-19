@@ -12,15 +12,22 @@ Creates a Docker setup to run qbreader locally, for development purposes.
 2. Clone `qbreader/website`. You will need a version that has support for
    specifying MongoDB URI. For now use
    `https://github.com/benjiec/qbreader-website`. A PR for the support is being
-   sent to `https://github.com/qbreader/website` the official repository.
+   sent to `https://github.com/qbreader/website` the official repository. Also,
+   if you are doing your own development, you will want to clone from the
+   appropriate forked repo.
 
 3. Clone `qbreader/database`. You will need a version that has support for
    specifying MongoDB URI. For now use
    `https://github.com/benjiec/qbreader-database`. A PR for the support is being
    sent to `https://github.com/qbreader/database` the official repository.
+   Also, if you are doing your own development, you will want to clone from the
+   appropriate forked repo.
 
 4. Download a backup copy of the database and put that in `dump/qbreader`. This
-   directory should contain the various `.bson` files.
+   directory should contain the various `.bson` files. E.g. visit
+   `https://www.qbreader.org/db/backups`, visit the backup Google Drive,
+   download one of the timestamped directories as a zip file, and unzip and
+   copy the `.bson` files to `dump/qbreader`.
 
 5. Build docker images and start docker instances using
    `docker compose up -d --build`
@@ -31,3 +38,5 @@ Creates a Docker setup to run qbreader locally, for development purposes.
 ### Running
 
 1. `docker-compose up -d`
+
+2. Visit `localhost:3000` from a browser
