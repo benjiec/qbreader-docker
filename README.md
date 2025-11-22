@@ -10,16 +10,23 @@ Creates a Docker setup to run qbreader locally, for development purposes.
    e.g. `git clone https://github.com/benjiec/qbreader-docker && cd qbreader-docker`
 
 2. Clone `qbreader/website`. You will need a version that has support for
-   specifying MongoDB URI. For now use
-   `https://github.com/benjiec/qbreader-website`. A PR for the support is being
-   sent to `https://github.com/qbreader/website` the official repository. Also,
-   if you are doing your own development, you will want to clone from the
+   specifying MongoDB URI.
+
+   For now use `https://github.com/benjiec/qbreader-website`, then switch to
+   `add-mongodb-uri-env` branch. A PR for the support is being sent to
+   `https://github.com/qbreader/website` the official repository.
+
+   Also, if you are doing your own development, you will want to clone from the
    appropriate forked repo.
 
 3. Clone `qbreader/database`. You will need a version that has support for
-   specifying MongoDB URI. For now use
-   `https://github.com/benjiec/qbreader-database`. A PR for the support is being
-   sent to `https://github.com/qbreader/database` the official repository.
+   specifying MongoDB URI.
+
+   For now use
+   `https://github.com/benjiec/qbreader-database`, then switch to
+   `add-mongodb-uri-env` branch. A PR for the support is being sent to
+   `https://github.com/qbreader/database` the official repository.
+
    Also, if you are doing your own development, you will want to clone from the
    appropriate forked repo.
 
