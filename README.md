@@ -47,3 +47,32 @@ Creates a Docker setup to run qbreader locally, for development purposes.
 1. `docker-compose up -d`
 
 2. Visit `localhost:3000` from a browser
+
+The following commands are handy.
+
+Rebuild assets (e.g. scss)
+
+```
+docker-compose exec website npm run build
+```
+
+Or rebuild whole image for website if dependencies have changed
+
+```
+docker-compose build
+docker-compose up -d
+```
+
+Restart qbreader website
+
+```
+docker-compose restart website
+```
+
+Monitor logs
+
+```
+docker-compose logs -f
+docker-compose logs -f website
+```
+

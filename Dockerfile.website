@@ -1,13 +1,21 @@
 FROM node:20
 
-WORKDIR /qbreader/website
+WORKDIR /qbreader
 
-# Install only dependencies first for better layer caching
+# Install dependencies outside the bind-mounted source directory
 COPY website/package*.json ./
 RUN npm ci
 
 # Copy source and build
 COPY website /qbreader/website
+
+# Ensure build tools resolve from parent node_modules
+ENV PATH="/qbreader/node_modules/.bin:${PATH}"
+# Create a symlink so relative imports to ../node_modules keep working at build time
+RUN ln -sfn /qbreader/node_modules /qbreader/website/node_modules
+
+# Build assets
+WORKDIR /qbreader/website
 RUN npm run build
 
 EXPOSE 3000

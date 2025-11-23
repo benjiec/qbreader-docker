@@ -31,5 +31,13 @@ services:
       - MONGODB_PASSWORD=qbreader
     ports:
       - "3000:3000"
+    volumes:
+      - ./website:/qbreader/website
+    command: >
+      sh -lc "ln -sfn /qbreader/node_modules /qbreader/website/node_modules;
+      npm run build &&
+      npm run webpack-watch &
+      sass --watch scss/light.scss:client/bootstrap/light.css scss/dark.scss:client/bootstrap/dark.css --style compressed &
+      node --watch index.js"
 
 
